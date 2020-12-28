@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:fullscreen_image/src/utils/app_config.dart';
+import 'package:custom_full_image_screen/src/utils/app_config.dart';
 
 class ImageCachedDetails extends StatefulWidget {
   final String image;

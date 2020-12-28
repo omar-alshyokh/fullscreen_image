@@ -3,21 +3,49 @@ import 'package:flutter/material.dart';
 import 'package:uuid/uuid.dart';
 import 'page_details/image_network_details.dart';
 import 'utils/app_config.dart';
-
+/// here the class which you can used to build fullscreen network image
 class ImageNetworkFullscreen extends StatefulWidget {
+  /// image url
   final String imageUrl;
+
+  /// image height
   final double imageHeight;
+
+  /// image width
   final double imageWidth;
+
+  /// image details width
   final double imageDetailsWidth;
+
+
+  /// image details height
   final double imageDetailsHeight;
+
+  /// image BoxFit
   final BoxFit imageFit;
+
+  /// image details BoxFit
   final BoxFit imageDetailsFit;
+
+  /// image border radius
   final double imageBorderRadius;
+
+  /// appBar details color
   final Color appBarBackgroundColorDetails;
+
+  /// background color details
   final Color backgroundColorDetails;
+
+  /// icon details color
   final Color iconBackButtonColor;
+
+  /// to hide arrow back icon in page details
   final bool hideBackButtonDetails;
+
+  /// to hide arrow appbar in page details
   final bool hideAppBarDetails;
+
+  /// if you need to use hero animation
   final bool withHeroAnimation;
 
   const ImageNetworkFullscreen({

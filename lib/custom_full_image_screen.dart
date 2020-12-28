@@ -1,4 +1,4 @@
-library fullscreen_image;
+library custom_full_image_screen;
 
 export 'src/image_assets_fullscreen.dart';
 export 'src/image_cached_fullscreen.dart';

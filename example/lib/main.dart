@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:fullscreen_image/fullscreen_image.dart';
-
+import 'package:custom_full_image_screen/custom_full_image_screen.dart';
 class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext context) {

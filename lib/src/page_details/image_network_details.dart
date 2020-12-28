@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fullscreen_image/src/utils/app_config.dart';
+import 'package:custom_full_image_screen/src/utils/app_config.dart';
 
 class ImageNetworkDetails extends StatefulWidget {
   final String image;
