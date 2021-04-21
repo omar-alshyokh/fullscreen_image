@@ -6,29 +6,28 @@ class ImageAssetsDetails extends StatefulWidget {
   final String tag;
   final double width;
   final double height;
-  final BoxFit fit;
-  final Color appBarBackgroundColorDetails;
-  final Color backgroundColorDetails;
-  final Color iconBackButtonColor;
+  final BoxFit? fit;
+  final Color? appBarBackgroundColorDetails;
+  final Color? backgroundColorDetails;
+  final Color? iconBackButtonColor;
   final bool hideBackButtonDetails;
   final bool hideAppBarDetails;
   final bool withHero;
 
   const ImageAssetsDetails(
-      {Key key,
-      @required this.image,
-      this.tag,
-      this.height,
-      this.width,
-      this.fit,
-      this.backgroundColorDetails,
-      this.appBarBackgroundColorDetails,
-      this.hideBackButtonDetails,
-      this.hideAppBarDetails,
-      this.iconBackButtonColor,
-      this.withHero})
-      : assert(image != null),
-        super(key: key);
+      {Key? key,
+      required this.image,
+      required this.tag,
+      required this.height,
+      required this.width,
+      required this.fit,
+      required this.backgroundColorDetails,
+      required this.appBarBackgroundColorDetails,
+      required this.hideBackButtonDetails,
+      required this.hideAppBarDetails,
+      required this.iconBackButtonColor,
+      required this.withHero})
+      : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
@@ -38,7 +37,7 @@ class ImageAssetsDetails extends StatefulWidget {
 
 class _ImageAssetsDetailsState extends State<ImageAssetsDetails>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {
@@ -84,7 +83,7 @@ class _ImageAssetsDetailsState extends State<ImageAssetsDetails>
 
   Widget _buildImage() {
     return Image.asset(
-      widget.image ?? '',
+      widget.image,
       width: widget.width,
       height: widget.height,
       fit: widget.fit,

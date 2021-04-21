@@ -23,7 +23,7 @@ class ImageCachedFullscreen extends StatefulWidget {
   final double imageDetailsHeight;
 
   /// image BoxFit
-  final BoxFit imageFit;
+  final BoxFit? imageFit;
 
   /// image details BoxFit
   final BoxFit imageDetailsFit;
@@ -50,17 +50,17 @@ class ImageCachedFullscreen extends StatefulWidget {
   final bool withHeroAnimation;
 
   /// custom error widget
-  final Widget errorWidget;
+  final Widget? errorWidget;
 
   /// custom placeholder widget
-  final Widget placeholder;
+  final Widget? placeholder;
 
   /// custom placeholder inside page details widget
   final Widget placeholderDetails;
 
   const ImageCachedFullscreen({
-    Key key,
-    @required this.imageUrl,
+    Key? key,
+    required this.imageUrl,
     this.imageHeight = 50.0,
     this.imageWidth = 50.0,
     this.imageDetailsHeight = double.infinity,
@@ -74,11 +74,10 @@ class ImageCachedFullscreen extends StatefulWidget {
     this.hideBackButtonDetails = false,
     this.errorWidget,
     this.placeholder,
-    this.placeholderDetails,
+    required this.placeholderDetails,
     this.hideAppBarDetails = false,
     this.withHeroAnimation = false,
-  })  : assert(imageUrl != null),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   _ImageCachedFullscreenState createState() => _ImageCachedFullscreenState();
@@ -86,7 +85,7 @@ class ImageCachedFullscreen extends StatefulWidget {
 
 class _ImageCachedFullscreenState extends State<ImageCachedFullscreen>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
   static final uuid = Uuid();
   final String imgTag = uuid.v4();
 
@@ -138,7 +137,7 @@ class _ImageCachedFullscreenState extends State<ImageCachedFullscreen>
           width: widget.imageWidth,
           height: widget.imageHeight,
           child: CachedNetworkImage(
-            imageUrl: widget.imageUrl ?? '',
+            imageUrl: widget.imageUrl,
             width: widget.imageWidth,
             height: widget.imageHeight,
             fadeOutDuration: Duration(milliseconds: 500),
@@ -175,18 +174,18 @@ class _ImageCachedFullscreenState extends State<ImageCachedFullscreen>
   }
 
   void _goToDetail({
-    String image,
-    String tag,
-    double width,
-    double height,
-    BoxFit fit,
-    Color appBarBackgroundColorDetails,
-    Color backgroundColorDetails,
-    Color iconBackButtonColor,
-    bool hideBackButtonDetails,
-    bool hideAppBarDetails,
-    bool withHero,
-    Widget placeholderDetails,
+    required String image,
+    required String tag,
+    required double width,
+    required double height,
+    required BoxFit fit,
+    required Color appBarBackgroundColorDetails,
+    required Color backgroundColorDetails,
+    required Color iconBackButtonColor,
+    required bool hideBackButtonDetails,
+    required bool hideAppBarDetails,
+    required bool withHero,
+    required Widget placeholderDetails,
   }) async {
     final page = ImageCachedDetails(
       image: image,
@@ -216,3 +215,4 @@ class _ImageCachedFullscreenState extends State<ImageCachedFullscreen>
     );
   }
 }
+

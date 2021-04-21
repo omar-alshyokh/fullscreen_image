@@ -8,29 +8,29 @@ class ImageCachedDetails extends StatefulWidget {
   final double width;
   final double height;
   final BoxFit fit;
-  final Color appBarBackgroundColorDetails;
-  final Color backgroundColorDetails;
-  final Color iconBackButtonColor;
+  final Color? appBarBackgroundColorDetails;
+  final Color? backgroundColorDetails;
+  final Color? iconBackButtonColor;
   final bool hideBackButtonDetails;
   final bool hideAppBarDetails;
-  final Widget placeholder;
+  final Widget? placeholder;
   final bool withHero;
 
   const ImageCachedDetails({
-    Key key,
-    @required this.image,
-    this.tag,
-    this.height,
-    this.width,
-    this.fit,
-    this.backgroundColorDetails,
-    this.appBarBackgroundColorDetails,
-    this.hideBackButtonDetails,
-    this.hideAppBarDetails,
-    this.iconBackButtonColor,
-    this.placeholder,
-    this.withHero,
-  })  : assert(image != null),
+    Key? key,
+    required this.image,
+    required this.tag,
+    required this.height,
+    required this.width,
+    required this.fit,
+    required this.backgroundColorDetails,
+    required this.appBarBackgroundColorDetails,
+    required this.hideBackButtonDetails,
+    required this.hideAppBarDetails,
+    required this.iconBackButtonColor,
+    required this.placeholder,
+    required this.withHero,
+  })  :
         super(key: key);
 
   @override
@@ -41,7 +41,7 @@ class ImageCachedDetails extends StatefulWidget {
 
 class _ImageCachedDetailsState extends State<ImageCachedDetails>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
+ late AnimationController _controller;
 
   @override
   void initState() {
@@ -87,7 +87,7 @@ class _ImageCachedDetailsState extends State<ImageCachedDetails>
 
   Widget _buildImage() {
     return CachedNetworkImage(
-      imageUrl: widget.image ?? '',
+      imageUrl: widget.image,
       width: widget.width,
       height: widget.height,
       fadeOutDuration: Duration(milliseconds: 500),

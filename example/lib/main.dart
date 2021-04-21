@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
-  HttpClient createHttpClient(SecurityContext context) {
+  HttpClient createHttpClient(SecurityContext? context) {
     return super.createHttpClient(context)
       ..badCertificateCallback =
           (X509Certificate cert, String host, int port) => true;
@@ -33,9 +33,9 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -46,7 +46,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title!),
       ),
       body: Center(
         child: SingleChildScrollView(
@@ -109,6 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   errorWidget: Container(
                     child: Icon(Icons.error),
                   ),
+                  placeholderDetails: Container(),
                 ),
                 Divider(
                   height: 25,
@@ -118,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   style: TextStyle(color: Colors.blue, fontSize: 18),
                 ),
                 ImageCachedFullscreen(
-                  imageUrl: 'https://picsum.phots/200/300',
+                  imageUrl: 'https://picsum.photos/id/15/400/600',
                   imageBorderRadius: 20,
                   imageWidth: 200,
                   imageHeight: 200,
@@ -142,6 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   hideAppBarDetails: true,
                   imageFit: BoxFit.fill,
                   withHeroAnimation: true,
+                  placeholderDetails: Center(child: CircularProgressIndicator()),
                 ),
                 SizedBox(
                   height: 20,

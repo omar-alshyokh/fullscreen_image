@@ -22,7 +22,7 @@ class ImageAssetsFullscreen extends StatefulWidget {
   final double imageDetailsHeight;
 
   /// image BoxFit
-  final BoxFit imageFit;
+  final BoxFit? imageFit;
 
   /// image details BoxFit
   final BoxFit imageDetailsFit;
@@ -49,8 +49,8 @@ class ImageAssetsFullscreen extends StatefulWidget {
   final bool withHeroAnimation;
 
   const ImageAssetsFullscreen({
-    Key key,
-    @required this.imagePath,
+    Key? key,
+    required this.imagePath,
     this.imageHeight = 50.0,
     this.imageWidth = 50.0,
     this.imageDetailsHeight = double.infinity,
@@ -64,8 +64,7 @@ class ImageAssetsFullscreen extends StatefulWidget {
     this.hideBackButtonDetails = false,
     this.hideAppBarDetails = false,
     this.withHeroAnimation = false,
-  })  : assert(imagePath != null),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   _ImageAssetsFullscreenState createState() => _ImageAssetsFullscreenState();
@@ -73,7 +72,7 @@ class ImageAssetsFullscreen extends StatefulWidget {
 
 class _ImageAssetsFullscreenState extends State<ImageAssetsFullscreen>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
   static final uuid = Uuid();
   final String imgTag = uuid.v4();
 
@@ -124,7 +123,7 @@ class _ImageAssetsFullscreenState extends State<ImageAssetsFullscreen>
           width: widget.imageWidth,
           height: widget.imageHeight,
           child: Image.asset(
-            widget.imagePath ?? '',
+            widget.imagePath,
             width: widget.imageWidth,
             height: widget.imageHeight,
             fit: widget.imageFit ?? BoxFit.cover,
@@ -133,17 +132,17 @@ class _ImageAssetsFullscreenState extends State<ImageAssetsFullscreen>
   }
 
   void _goToDetail({
-    String image,
-    String tag,
-    double width,
-    double height,
-    BoxFit fit,
-    Color appBarBackgroundColorDetails,
-    Color backgroundColorDetails,
-    Color iconBackButtonColor,
-    bool hideBackButtonDetails,
-    bool hideAppBarDetails,
-    bool withHero,
+    required String image,
+    required String tag,
+    required double width,
+    required double height,
+    required BoxFit fit,
+    required Color appBarBackgroundColorDetails,
+    required Color backgroundColorDetails,
+    required Color iconBackButtonColor,
+    required bool hideBackButtonDetails,
+    required bool hideAppBarDetails,
+    required bool withHero,
   }) async {
     final page = ImageAssetsDetails(
       image: image,

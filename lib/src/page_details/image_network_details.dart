@@ -3,31 +3,31 @@ import 'package:flutter/material.dart';
 
 class ImageNetworkDetails extends StatefulWidget {
   final String image;
-  final String tag;
+  final String? tag;
   final double width;
   final double height;
   final BoxFit fit;
-  final Color appBarBackgroundColorDetails;
-  final Color backgroundColorDetails;
-  final Color iconBackButtonColor;
+  final Color? appBarBackgroundColorDetails;
+  final Color? backgroundColorDetails;
+  final Color? iconBackButtonColor;
   final bool hideBackButtonDetails;
   final bool hideAppBarDetails;
   final bool withHero;
 
   const ImageNetworkDetails({
-    Key key,
-    @required this.image,
+    Key? key,
+    required this.image,
     this.tag,
-    this.height,
-    this.width,
-    this.fit,
-    this.backgroundColorDetails,
-    this.appBarBackgroundColorDetails,
-    this.hideBackButtonDetails,
-    this.hideAppBarDetails,
-    this.iconBackButtonColor,
-    this.withHero,
-  })  : assert(image != null),
+    required this.height,
+    required this.width,
+    required this.fit,
+    required this.backgroundColorDetails,
+    required this.appBarBackgroundColorDetails,
+    required this.hideBackButtonDetails,
+    required this.hideAppBarDetails,
+    required this.iconBackButtonColor,
+    required this.withHero,
+  })   : assert(!withHero && (tag != null)),
         super(key: key);
 
   @override
@@ -38,7 +38,7 @@ class ImageNetworkDetails extends StatefulWidget {
 
 class _ImageNetworkDetailsState extends State<ImageNetworkDetails>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
 
   @override
   void initState() {
@@ -73,8 +73,8 @@ class _ImageNetworkDetailsState extends State<ImageNetworkDetails>
           width: double.infinity,
           height: double.infinity,
           child: Center(
-            child: widget.withHero && appConfig.notNullOrEmpty(widget.tag)
-                ? Hero(tag: widget.tag, child: _buildImage())
+            child: widget.withHero && appConfig.notNullOrEmpty(widget.tag!)
+                ? Hero(tag: widget.tag!, child: _buildImage())
                 : _buildImage(),
           ),
         ),
@@ -84,7 +84,7 @@ class _ImageNetworkDetailsState extends State<ImageNetworkDetails>
 
   Widget _buildImage() {
     return Image.network(
-      widget.image ?? '',
+      widget.image ,
       width: widget.width,
       height: widget.height,
       fit: widget.fit,

@@ -23,7 +23,7 @@ class ImageNetworkFullscreen extends StatefulWidget {
   final double imageDetailsHeight;
 
   /// image BoxFit
-  final BoxFit imageFit;
+  final BoxFit? imageFit;
 
   /// image details BoxFit
   final BoxFit imageDetailsFit;
@@ -32,13 +32,13 @@ class ImageNetworkFullscreen extends StatefulWidget {
   final double imageBorderRadius;
 
   /// appBar details color
-  final Color appBarBackgroundColorDetails;
+  final Color? appBarBackgroundColorDetails;
 
   /// background color details
-  final Color backgroundColorDetails;
+  final Color? backgroundColorDetails;
 
   /// icon details color
-  final Color iconBackButtonColor;
+  final Color? iconBackButtonColor;
 
   /// to hide arrow back icon in page details
   final bool hideBackButtonDetails;
@@ -50,8 +50,8 @@ class ImageNetworkFullscreen extends StatefulWidget {
   final bool withHeroAnimation;
 
   const ImageNetworkFullscreen({
-    Key key,
-    @required this.imageUrl,
+    Key? key,
+    required this.imageUrl,
     this.imageHeight = 50.0,
     this.imageWidth = 50.0,
     this.imageDetailsHeight = double.infinity,
@@ -65,8 +65,7 @@ class ImageNetworkFullscreen extends StatefulWidget {
     this.hideBackButtonDetails = false,
     this.hideAppBarDetails = false,
     this.withHeroAnimation = false,
-  })  : assert(imageUrl != null),
-        super(key: key);
+  })  :super(key: key);
 
   @override
   _ImageNetworkFullscreenState createState() => _ImageNetworkFullscreenState();
@@ -74,7 +73,7 @@ class ImageNetworkFullscreen extends StatefulWidget {
 
 class _ImageNetworkFullscreenState extends State<ImageNetworkFullscreen>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
+  late AnimationController _controller;
   static final uuid = Uuid();
   final String imgTag = uuid.v4();
 
@@ -125,26 +124,26 @@ class _ImageNetworkFullscreenState extends State<ImageNetworkFullscreen>
           width: widget.imageWidth,
           height: widget.imageHeight,
           child: Image.network(
-            widget.imageUrl ?? '',
+            widget.imageUrl,
             width: widget.imageWidth,
             height: widget.imageHeight,
             fit: widget.imageFit ?? BoxFit.cover,
-          )),
+          ),),
     );
   }
 
   void _goToDetail({
-    String image,
-    String tag,
-    double width,
-    double height,
-    BoxFit fit,
-    Color appBarBackgroundColorDetails,
-    Color backgroundColorDetails,
-    Color iconBackButtonColor,
-    bool hideBackButtonDetails,
-    bool hideAppBarDetails,
-    bool withHero,
+    required String image,
+    required String tag,
+    required double width,
+    required double height,
+    required BoxFit fit,
+    Color? appBarBackgroundColorDetails,
+    Color? backgroundColorDetails,
+    Color? iconBackButtonColor,
+    required bool hideBackButtonDetails,
+    required bool hideAppBarDetails,
+    required bool withHero,
   }) async {
     final page = ImageNetworkDetails(
       image: image,
