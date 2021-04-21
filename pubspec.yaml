@@ -1,6 +1,6 @@
 name: custom_full_image_screen
 description: A new Flutter package which help developers to display image as fullscreen with options to customize it
-version: 0.0.3
+version: 0.0.4
 homepage: https://github.com/OmMAar/fullscreen_image
 
 environment:

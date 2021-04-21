@@ -3,7 +3,7 @@
 Full Screen Image package
 A new Flutter package that implements Full Screen Image feature.
 
-[![pub.dev](https://img.shields.io/static/v1?label=pub.dev&message=v0.0.3&color=blue)](https://pub.dev/packages/custom_full_image_screen)
+[![pub.dev](https://img.shields.io/static/v1?label=pub.dev&message=v0.0.4&color=blue)](https://pub.dev/packages/custom_full_image_screen)
 
 ## Getting Started
 Did you try to make image as full screen ?? Ok, do not worry, we are here to **help** and we brought a new library for you simple to use, scalable to develop and light to integrate.
